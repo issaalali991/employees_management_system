@@ -3,9 +3,10 @@ import axios from 'axios';
 
 function ShowAllTasks() {
   const [data, setData] = useState([]);
+  const VITE_APP_API_BASE_URL=import.meta.env.VITE_APP_API_BASE_URL;
 
   useEffect(() => {
-    axios.get('http://localhost:4000/employee/alltasks')
+    axios.get(`${VITE_APP_API_BASE_URL}/employee/alltasks`)
       .then(res => {
         setData(res.data);
       });

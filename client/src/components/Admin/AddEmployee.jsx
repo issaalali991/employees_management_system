@@ -16,14 +16,14 @@ function AddEmployee() {
     dep_id: "",
   });
   const [skills, setSkills] = useState([{}]);
-    
-  
+
   const [addSkills, setAddSkills] = useState({
     skill_id: "",
     emp_id: "",
   });
 
   const navigate = useNavigate();
+  const VITE_APP_API_BASE_URL=import.meta.env.VITE_APP_API_BASE_URL;
   // ----get all Skill----
   // useEffect(() => {
   //   const fetchData = async () => {
@@ -39,13 +39,12 @@ function AddEmployee() {
   //   fetchData();
   // }, []);
 
-
   // ----get all Department----
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:4000/employee/allDepartment"
+          `${VITE_APP_API_BASE_URL}/employee/allDepartment`
         );
         if (response.status === 200) {
           setDepartment(response.data);
@@ -206,7 +205,6 @@ function AddEmployee() {
 ))}
 
             </div> */}
-           
 
             <button
               type="submit"

@@ -13,11 +13,12 @@ function AddSkillsToEmp() {
     skill_id: "",
   });
   const navigate = useNavigate();
+  const VITE_APP_API_BASE_URL=import.meta.env.VITE_APP_API_BASE_URL;
   useEffect(() => {
     async function fetchData() {
       try {
         const response = await axios.get(
-          "http://localhost:4000/employee/allskill"
+          `${VITE_APP_API_BASE_URL}/employee/allskill`
         );
         setAllSkills(response.data);
       } catch (error) {
@@ -31,7 +32,7 @@ function AddSkillsToEmp() {
     setSending(true);
     try {
       const response = await axios.post(
-        "http://localhost:4000/employee/skills",
+        `${VITE_APP_API_BASE_URL}/employee/skills`,
         data
       );
       if (response.status === 200) {

@@ -12,12 +12,13 @@ function Skills() {
     description: '',
   });
   const navigate = useNavigate();
+  const VITE_APP_API_BASE_URL=import.meta.env.VITE_APP_API_BASE_URL;
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSending(true);
     try {
       const response = await axios.post(
-        'http://localhost:4000/employee/skill',
+        `${VITE_APP_API_BASE_URL}/employee/skill`,
         data
       );
       if (response.status === 200) {

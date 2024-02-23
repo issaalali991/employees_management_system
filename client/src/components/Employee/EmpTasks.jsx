@@ -6,10 +6,11 @@ function EmpTasks() {
   const [data, setData] = useState([]);
   const emp_id = localStorage.getItem('userID');
   const [statustoggle, setStatustoggle] = useState(false);
+  const VITE_APP_API_BASE_URL=import.meta.env.VITE_APP_API_BASE_URL;
   const handleSetStatus = (task_id, status) => () => {
     status = status === 'pending' ? 'completed' : 'pending';
     console.log(status, task_id, 'status')  
-    axios.post('http://localhost:4000/employee/setstatus', { task_id, status  })
+    axios.post(`${VITE_APP_API_BASE_URL}/employee/setstatus`, { task_id, status  })
 
       .then(res => {
         console.log(res.data);
@@ -20,7 +21,7 @@ function EmpTasks() {
 
 
   useEffect(() => {
-    axios.post('http://localhost:4000/employee/emptask', { emp_id })
+    axios.post(`${VITE_APP_API_BASE_URL}/employee/emptask`, { emp_id })
       .then(res => {
         setData(res.data);
       });

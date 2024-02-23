@@ -3,9 +3,10 @@ import axios from 'axios';
 
 function ShowDep() {
   const [data, setData] = useState([]);
+  const VITE_APP_API_BASE_URL=import.meta.env.VITE_APP_API_BASE_URL;
 
   useEffect(() => {
-    axios.get('http://localhost:4000/employee/allDepartment')
+    axios.get(`${VITE_APP_API_BASE_URL}/employee/allDepartment`)
       .then(res => {
         setData(res.data);
       });

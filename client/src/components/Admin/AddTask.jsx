@@ -15,10 +15,11 @@ function AddTask() {
     emp_id: '',
   });
   const navigate = useNavigate();
+  const VITE_APP_API_BASE_URL=import.meta.env.VITE_APP_API_BASE_URL;
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await axios.get('http://localhost:4000/employee/nameemps');
+        const response = await axios.get(`${VITE_APP_API_BASE_URL}/employee/nameemps`);
         setName(response.data);
       } catch (error) {
         toast.error('error2'+error.response.data.message);
@@ -39,7 +40,7 @@ function AddTask() {
     setSending(true);
     try {
       const response = await axios.post(
-        'http://localhost:4000/employee/task',
+        `${VITE_APP_API_BASE_URL}/employee/task`,
         data
       );
       if (response.status === 200) {

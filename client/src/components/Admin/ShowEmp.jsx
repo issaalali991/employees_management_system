@@ -3,9 +3,10 @@ import axios from 'axios';
 
 function ShowEmp() {
   const [data, setData] = useState([]);
+  const VITE_APP_API_BASE_URL=import.meta.env.VITE_APP_API_BASE_URL;
 
   useEffect(() => {
-    axios.get('http://localhost:4000/employee/allempployee')
+    axios.get(`${VITE_APP_API_BASE_URL}/employee/allempployee`)
       .then(res => {
         setData(res.data);
       });

@@ -2,8 +2,9 @@ import React,{ useState, useEffect } from 'react';
 import axios from 'axios';
 function ShowAllSkills() {
   const [data, setData] = useState([]);
+  const VITE_APP_API_BASE_URL=import.meta.env.VITE_APP_API_BASE_URL;
   useEffect(() => {
-    axios.get('http://localhost:4000/employee/employeeskill')
+    axios.get(`${VITE_APP_API_BASE_URL}/employeeskill`)
       .then(res => {
         setData(res.data);
       });
