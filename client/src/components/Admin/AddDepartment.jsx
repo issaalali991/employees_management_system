@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { SpinnerDotted } from "spinners-react";
 import axios from "axios";
+import React from 'react';
 function AddDepartment() {
   const [sending, setSending] = useState(false);
   const [data, setData] = useState({

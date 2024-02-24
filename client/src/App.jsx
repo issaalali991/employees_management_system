@@ -4,6 +4,8 @@ import Register from "./components/Register";
 import Login from "./components/Login";
 import { Cookies, useCookies } from "react-cookie";
 import StartPage from "./components/StartPage";
+import React from 'react';
+
 
 import { Routes,Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
