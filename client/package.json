@@ -7,13 +7,12 @@
 
     "dev": "vite",
     "build": "vite build",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d bild",
+   
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
   "dependencies": {
-    "homepage": "https://issaalali991.github.io/employees_management_system",
+    
     "axios": "^1.6.7",
     "cors": "^2.8.5",
     "gh-pages": "^6.1.1",
