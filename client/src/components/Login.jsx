@@ -15,7 +15,7 @@ function Login() {
 
   const VITE_APP_API_BASE_URL =
     "https://employees-management-system.onrender.com";
-  console.log(VITE_APP_API_BASE_URL);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
