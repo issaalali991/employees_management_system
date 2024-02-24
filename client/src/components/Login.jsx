@@ -40,7 +40,6 @@ function Login() {
         alert("Error setting up the request.");
       }
     }
-    
   };
 
   return (
@@ -54,7 +53,8 @@ function Login() {
             <input
               type="text"
               value={email}
-              onChange={(e) => {setEmail(e.target.value)
+              onChange={(e) => {
+                setEmail(e.target.value);
               }}
               className="border rounded w-full p-2"
               required

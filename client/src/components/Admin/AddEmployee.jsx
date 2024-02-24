@@ -61,7 +61,7 @@ function AddEmployee() {
     setSending(true);
     try {
       const response = await axios.post(
-        "http://localhost:4000/employee/registeremp",
+        `${API_BASE_URL}/employee/registeremp`,
         data
       );
       if (response.status === 201) {
