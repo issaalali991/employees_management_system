@@ -12,13 +12,16 @@ function Login() {
   const [setIsLoggedIn, checkUser] = useState(false);
   const [_, setCookie] = useCookies(["access_token"]);
   const navigate = useNavigate();
-  const API_BASE_URL = import.meta.env.VITE_APP_API_BASE_URL;
+
+  const VITE_APP_API_BASE_URL =
+    "https://employees-management-system.onrender.com";
+  console.log(VITE_APP_API_BASE_URL);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const res = await axios.post(`${API_BASE_URL}/employee/login`, {
+      const res = await axios.post(`${VITE_APP_API_BASE_URL}/employee/login`, {
         email: email,
         password: password,
       });

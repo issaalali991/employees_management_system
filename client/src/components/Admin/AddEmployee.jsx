@@ -23,7 +23,8 @@ function AddEmployee() {
   });
 
   const navigate = useNavigate();
-  const VITE_APP_API_BASE_URL=import.meta.env.VITE_APP_API_BASE_URL;
+  const VITE_APP_API_BASE_URL =
+    "https://employees-management-system.onrender.com";
   // ----get all Skill----
   // useEffect(() => {
   //   const fetchData = async () => {
@@ -61,7 +62,7 @@ function AddEmployee() {
     setSending(true);
     try {
       const response = await axios.post(
-        `${API_BASE_URL}/employee/registeremp`,
+        `${VITE_APP_API_BASE_URL}/employee/registeremp`,
         data
       );
       if (response.status === 201) {

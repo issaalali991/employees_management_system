@@ -1,15 +1,15 @@
-import React,{ useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 function ShowAllTasks() {
   const [data, setData] = useState([]);
-  const VITE_APP_API_BASE_URL=import.meta.env.VITE_APP_API_BASE_URL;
+  const VITE_APP_API_BASE_URL =
+    "https://employees-management-system.onrender.com";
 
   useEffect(() => {
-    axios.get(`${VITE_APP_API_BASE_URL}/employee/alltasks`)
-      .then(res => {
-        setData(res.data);
-      });
+    axios.get(`${VITE_APP_API_BASE_URL}/employee/alltasks`).then((res) => {
+      setData(res.data);
+    });
   }, []);
 
   return (
@@ -29,11 +29,15 @@ function ShowAllTasks() {
           {data.map((item, index) => (
             <React.Fragment key={index}>
               <tr>
-                <td className="py-2 px-4">{(index === 0 || item.task_name !== data[index - 1].task_name) ? item.task_name : ''}</td>
+                <td className="py-2 px-4">
+                  {index === 0 || item.task_name !== data[index - 1].task_name
+                    ? item.task_name
+                    : ""}
+                </td>
                 <td className="py-2 px-4">{item.description}</td>
                 <td className="py-2 px-4">{item.execution_duration}</td>
                 <td className="py-2 px-4">
-                  {item.status != 'pending' ? (
+                  {item.status != "pending" ? (
                     <span className="text-green-500">{item.status}</span>
                   ) : (
                     <span className="text-red-500">{item.status}</span>

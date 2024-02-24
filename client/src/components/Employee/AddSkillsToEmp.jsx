@@ -13,7 +13,8 @@ function AddSkillsToEmp() {
     skill_id: "",
   });
   const navigate = useNavigate();
-  const VITE_APP_API_BASE_URL=import.meta.env.VITE_APP_API_BASE_URL;
+  const VITE_APP_API_BASE_URL =
+    "https://employees-management-system.onrender.com";
   useEffect(() => {
     async function fetchData() {
       try {

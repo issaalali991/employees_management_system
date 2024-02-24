@@ -1,15 +1,15 @@
-import React,{ useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 function ShowDep() {
   const [data, setData] = useState([]);
-  const VITE_APP_API_BASE_URL=import.meta.env.VITE_APP_API_BASE_URL;
+  const VITE_APP_API_BASE_URL =
+    "https://employees-management-system.onrender.com";
 
   useEffect(() => {
-    axios.get(`${VITE_APP_API_BASE_URL}/employee/allDepartment`)
-      .then(res => {
-        setData(res.data);
-      });
+    axios.get(`${VITE_APP_API_BASE_URL}/employee/allDepartment`).then((res) => {
+      setData(res.data);
+    });
   }, []);
 
   return (
@@ -26,7 +26,11 @@ function ShowDep() {
           {data.map((item, index) => (
             <React.Fragment key={index}>
               <tr>
-                <td className="py-2 px-4">{(index === 0 || item.dep_name !== data[index - 1].dep_name) ? item.dep_name : ''}</td>
+                <td className="py-2 px-4">
+                  {index === 0 || item.dep_name !== data[index - 1].dep_name
+                    ? item.dep_name
+                    : ""}
+                </td>
                 <td className="py-2 px-4">{item.description}</td>
               </tr>
               {index < data.length - 1 && (

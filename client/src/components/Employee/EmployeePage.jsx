@@ -10,7 +10,7 @@ function EmployeePage() {
   const handleButtonClick = (e) => {
     if (e === "showtasks") {
       setContentToShow(true);
-      setAddSkills
+      setAddSkills(false);
     }
     if (e === "addskills") {
       setAddSkills(true);

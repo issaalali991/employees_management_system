@@ -1,18 +1,19 @@
-import { useState,useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import { SpinnerDotted } from 'spinners-react';
-import axios from 'axios';
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { SpinnerDotted } from "spinners-react";
+import axios from "axios";
 
 function Skills() {
   const [sending, setSending] = useState(false);
   const [name, setName] = useState([]);
   const [data, setData] = useState({
-    skill_name: '',
-    description: '',
+    skill_name: "",
+    description: "",
   });
   const navigate = useNavigate();
-  const VITE_APP_API_BASE_URL=import.meta.env.VITE_APP_API_BASE_URL;
+  const VITE_APP_API_BASE_URL =
+    "https://employees-management-system.onrender.com";
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSending(true);
@@ -23,20 +24,20 @@ function Skills() {
       );
       if (response.status === 200) {
         setData({
-          skill_name: '',
-          description: '',
+          skill_name: "",
+          description: "",
         });
         setSending(false);
-        navigate('/admin');
+        navigate("/admin");
       }
     } catch (error) {
       setSending(false);
-      toast.error('error1'+error.response.data.message);
+      toast.error("error1" + error.response.data.message);
     }
-  }
+  };
   const handleInputChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
-  }
+  };
   if (sending) {
     return (
       <div className="flex justify-center items-center h-screen">
@@ -78,10 +79,7 @@ function Skills() {
         </form>
       </div>
     </div>
-
-    
-
   );
 }
 
-export default Skills
+export default Skills;

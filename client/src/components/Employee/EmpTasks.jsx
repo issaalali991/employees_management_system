@@ -1,28 +1,28 @@
-import axios from 'axios';
-import React,{ useState, useEffect } from 'react';
-
+import axios from "axios";
+import React, { useState, useEffect } from "react";
 
 function EmpTasks() {
   const [data, setData] = useState([]);
-  const emp_id = localStorage.getItem('userID');
+  const emp_id = localStorage.getItem("userID");
   const [statustoggle, setStatustoggle] = useState(false);
-  const VITE_APP_API_BASE_URL=import.meta.env.VITE_APP_API_BASE_URL;
+  const VITE_APP_API_BASE_URL =
+    "https://employees-management-system.onrender.com";
   const handleSetStatus = (task_id, status) => () => {
-    status = status === 'pending' ? 'completed' : 'pending';
-    console.log(status, task_id, 'status')  
-    axios.post(`${VITE_APP_API_BASE_URL}/employee/setstatus`, { task_id, status  })
+    status = status === "pending" ? "completed" : "pending";
+    console.log(status, task_id, "status");
+    axios
+      .post(`${VITE_APP_API_BASE_URL}/employee/setstatus`, { task_id, status })
 
-      .then(res => {
+      .then((res) => {
         console.log(res.data);
         setStatustoggle(!statustoggle);
       });
-  }
-
-
+  };
 
   useEffect(() => {
-    axios.post(`${VITE_APP_API_BASE_URL}/employee/emptask`, { emp_id })
-      .then(res => {
+    axios
+      .post(`${VITE_APP_API_BASE_URL}/employee/emptask`, { emp_id })
+      .then((res) => {
         setData(res.data);
       });
   }, [statustoggle]);
@@ -44,24 +44,35 @@ function EmpTasks() {
           {data.map((item, index) => (
             <React.Fragment key={index}>
               <tr>
-                <td className="py-2 px-4">{(index === 0 || item.task_name !== data[index - 1].task_name) ? item.task_name : ''}</td>
+                <td className="py-2 px-4">
+                  {index === 0 || item.task_name !== data[index - 1].task_name
+                    ? item.task_name
+                    : ""}
+                </td>
                 <td className="py-2 px-4">{item.description}</td>
                 <td className="py-2 px-4">{item.execution_duration}</td>
                 <td className="py-2 px-4">
-                  {item.status != 'pending' ? (
+                  {item.status != "pending" ? (
                     <span className="text-green-500">{item.status}</span>
                   ) : (
                     <span className="text-red-500">{item.status}</span>
                   )}
-                 </td>
+                </td>
                 <td className="py-2 px-4">
                   <button
                     className="btn-blue"
                     onClick={handleSetStatus(item.taskid, item.status)}
                   >
-                    {item.status === 'pending' ? (<span className='text-white bg-green-500 px-2 py-1 rounded-md hover:bg-green-700 hover:text-white cursor-pointer transition duration-300 ease-in-out hover:shadow-lg hover:scale-105'
-                    >Mark as Completed </span>) : (<span className='text-white bg-red-500 px-2 py-1 rounded-md hover:bg-red-700 hover:text-white cursor-pointer transition duration-300 ease-in-out hover:shadow-lg hover:scale-105'
-                    > Mark as Pending</span> )}
+                    {item.status === "pending" ? (
+                      <span className="text-white bg-green-500 px-2 py-1 rounded-md hover:bg-green-700 hover:text-white cursor-pointer transition duration-300 ease-in-out hover:shadow-lg hover:scale-105">
+                        Mark as Completed{" "}
+                      </span>
+                    ) : (
+                      <span className="text-white bg-red-500 px-2 py-1 rounded-md hover:bg-red-700 hover:text-white cursor-pointer transition duration-300 ease-in-out hover:shadow-lg hover:scale-105">
+                        {" "}
+                        Mark as Pending
+                      </span>
+                    )}
                   </button>
                 </td>
               </tr>
